@@ -1,0 +1,79 @@
+<resources>
+		 <string name="app_name">B S Yeddyurappa</string>
+		 <string name="username">bsy</string>
+		 <string name="titletext">B S Yeddyurappa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="about_person_description">
+Bookanakere Siddalingappa Yeddyurappa (born 27 February 1943)[2] is an Indian politician who was the 19th Chief Minister of Karnataka and is currently president of Karnataka BJP . He is a member of the 16th Lok Sabha of India and represents the Shimoga constituency. He became the Chief Minister of Karnataka after leading the BJP to a victory in the 2008 Karnataka Assembly election in 2008. He was the first person from the Bharatiya Janata Party to become the Chief Minister of a South Indian state.[3] Owing to alleged ill-treatment meted out to Yeddyurappa by the BJP High Command, he left Bharatiya Janata Party. Later he formed Karnataka Janata Paksha.[4][5] However, in 2014 he merged it with BJP and joined the party again
+ "\n"
+       "\n"
+        <b>Personal life</b>"\n"
+      Yeddyurappa was born on 27 February 1943 in a village called Bookanakere in K.R.Pet taluk of Mandya district.[7][8] His parents were Siddalingappa and Puttathayamma. He was named after the presiding deity of a Shaivite temple built by the great saint Siddalingeshwara at Yediyur in Tumkuru district.[9] His mother died when he was four.[3] He completed his Pre-University College education from PES college, mandya.
+ "\n"
+        "\n"
+In 1965, he was appointed as a first-division clerk in the social welfare department but he quit the job and moved to Shikaripura where he joined as a clerk at Veerabhadra Shastri Shankar rice mill. In 1967, Yeddyurappa married Mythradevi, the daughter of the rice mill owner.[10] He later set up a hardware shop in Shivamogga. Yeddyurappa has two sons, Raghavendra, currently member of Karnataka Legislative Assembly representing Shikaripur Assembly Constituency and Vijayendra and three daughters, Arunadevi, Padmavati and Umadevi.[11] In 2004, his wife died after falling into a sump while drowning water.[12] In 2007, he changed the spelling of his name to its current spelling from the earlier "Yediyurappa" following the advice of his astrologers.[13] He is a follower of Lingayatism.
+"\n"
+        "\n"
+"\n"
+        <b>Political career</b>
+        "\n"
+        Having been associated with the Rashtriya Swayamsevak Sangh from his college days, Yeddyurappa public service began when he was appointed as Karyavaha (Secretary) of the Sangh Shikaripur unit in 1970. In 1972, he was elected to the Shikaripura Town Municipality and was also appointed as the President of the Taluk unit of the Jana Sangh.[11] In 1975, he was elected President of the Town Municipality of Shikaripura. He was imprisoned during the Emergency in India and lodged in the Bellary and Shimoga jails. In 1980, he was appointed President of the Shikaripura taluk unit of the BJP and later went on to become the president of BJPs Shimoga district unit in 1985. In 1988, he became the State President of the BJP in Karnataka. He was first elected to the lower house of the Karnataka Legislature in 1983 and has since represented the Shikaripura constituency six times. He has been a member of the Seventh, Eighth, Ninth, Tenth, Twelfth and Thirteenth Legislative Assemblies (lower house) of Karnataka. Following the 1994 state assembly elections, he became the Leader of Opposition in the Karnataka Legislative Assembly. In 1999, he lost the elections but was nominated by the BJP to become a member of the legislative council (upper house) of Karnataka.[2] Again, he was re-elected in 2004 and became the Leader of Opposition in the Karnataka Legislative Assembly during the chief ministership of Dharam Singh.
+His first stint in power when he helped was Janata Dal (Secular) leader H. D. Kumaraswamy to bring down the coalition government headed by Dharam Singh and form an alternative government with BJP. An agreement was made between the JD(S) and BJP, which specified that H. D. Kumaraswamy would be the Chief Minister for the first 20 months, after which Yeddyurappa would become the Chief Minister for the remaining 20 months. Yeddyurappa became the Deputy Chief Minister as well as the finance minister in Kumaraswamy Government.[16] He was credited[by whom?] with presenting good budgets and for initiating various welfare programs such as the Bhagyalakshmi scheme, bicycles for students, a ban on arrack and farm loan waivers.
+
+However, in October 2007, when it was Yeddyurappa turn to become Chief Minister, Kumaraswamy refused to relinquish his post. This forced Yeddyurappa and all the ministers from his party to resign and on 5 October, the BJP formally withdrew the support to the Kumaraswamy government.[17] Karnataka came under President\'s rule which was revoked on 7 November as the JD(S) and the BJP decided to bury their differences and this paved the way for Yeddyurappa to become the Chief Minister of Karnataka. Yeddyurappa was sworn in as the 25th Chief Minister of Karnataka on 12 November 2007.[18] However, JD(S) refused to support his government over disagreement on sharing of ministries which resulted in his resignation as Chief Minister on 19 November 2007.[19]
+
+In Karnataka 2008 Assembly elections, Yeddyurappa contested from Shikaripura against former Chief Minister S. Bangarappa of the Samajwadi Party. The Indian National Congress and JD(S) backed Bangarappa, but despite this, Yeddyurappa won the seat by a margin of more than 45,000 votes.[20] He also led the BJP to a historic victory in the state and Karnataka became the gateway for the BJP in south India.[21] He took the oath of office as Chief Minister on 30 May 2008.
+        "\n"
+    </string>
+    <string name="title_activity_splash" translatable="false">SplashActivity</string>
+    <string name="home">Home</string>
+    <string name="about_person">About Yeddyurappa</string>
+    <string name="as_chief">As a MLA</string>
+    <string name="achivements">Achievements</string>
+    <string name="janatadarshan">Janatadarshan</string>
+    <string name="manifesto">BJP Manifesto</string>
+    <string name="image_gallery">Image Gallery</string>
+    <string name="hdk_tv">Video Gallery</string>
+    <string name="share">Share This App</string>
+    <string name="settings_tab">Settings</string>
+    <string name="tell_friend">Tell a friend</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="title_select_language">Select language</string>
+    <!--<string name="title_upload_quality">Select language</string>-->
+    <string name="summary_language">English or Kannada</string>
+
+
+    <string name="hint_name">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="btn_sign_up">Send letter</string>
+    <string name="hint_phone">Valid Phone Number</string>
+    <string name="connect_to_person">Write a letter</string>
+
+
+    <string name="pref_header_about">About</string>
+    <string name="pref_header_contact_ust">Contact Us</string>
+    <string name="pref_header_email">kuruvatechnologies@gmail.com</string>
+
+    <string name="summary_about">We are a team of like-minded people from Kuruva Technologies LLP, specialized in development of Android App Development creating new trends across the app space. Glad to Help in anyway!</string>
+    <string name="app_version">3.5</string>
+    <string name="summary_support">Got any queries? We are happy to help!</string>
+    <string name="title_send_feedback">Send Feedback</string>
+    <string name="suggestion_box_tab">Contact Me</string>
+    <string name="title_version">Version</string>
+    <string name="choose_email_client">Choose email client</string>
+    <string name="title_new_notification_sound">New message notification</string>
+    <string name="title_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Vibrate on new notification</string>
+    <string name="key_upload_quality">key_upload_quality</string>
+    <string name="notifications_new_message">notifications_new_message</string>
+    <string name="key_notifications_new_message_ringtone">key_notifications_new_message_ringtone</string>
+    <string name="key_vibrate">key_vibrate</string>
+    <string name="key_send_feedback">key_send_feedback</string>
+    <string name="internet_not_available">Internet not available, Cross check your internet connectivity and try again</string>
+</resources>
