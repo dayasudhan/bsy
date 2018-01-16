@@ -170,6 +170,9 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     shareIntent.setType("text/html");
                     String youtube_link = "https://www.youtube.com/watch?v=";
                     youtube_link = youtube_link + feedList.get(getLayoutPosition()).getVideoid();
+
+                    youtube_link = youtube_link  + "\n";
+                    youtube_link = youtube_link + ctx.getString(R.string.invitelink);
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT,  "Subject");
                     shareIntent.putExtra(Intent.EXTRA_TEXT, youtube_link);
                     shareIntent.setAction(Intent.ACTION_SEND);

@@ -76,6 +76,10 @@ public class FullScreenImageAdapter extends PagerAdapter {
                 ArrayList<Uri> imageUris = new ArrayList<Uri>();
                 imageUris.add(Uri.parse(imageLoader.getFilePath(imageurl)));
                 shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+                String strshare = "";
+                strshare = strshare  + "\n";
+                strshare = strshare + _activity.getString(R.string.invitelink);
+                shareIntent.putExtra(Intent.EXTRA_TEXT,strshare);
                 shareIntent.setType("image/*");
                 shareIntent.setAction(Intent.ACTION_SEND);
                 _activity.startActivity(Intent.createChooser(shareIntent, "Share it ...."));

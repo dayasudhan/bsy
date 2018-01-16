@@ -123,7 +123,17 @@ public class AboutFragment extends Fragment {
             public void onClick(View arg0) {
                 Intent shareIntent = new Intent();
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, feedItem.getHeading());
-                shareIntent.putExtra(Intent.EXTRA_TEXT, feedItem.getDescription());
+                String strshare = "";
+                if(feedItem.getDescription().length() > 0) {
+                    strshare = new String(feedItem.getDescription());
+                }
+                else
+                {
+                    strshare = new String(feedItem.getHeading());
+                }
+                strshare = strshare  + "\n";
+                strshare = strshare + getString(R.string.invitelink);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, strshare);
 
                 shareIntent.setAction(Intent.ACTION_SEND);
 

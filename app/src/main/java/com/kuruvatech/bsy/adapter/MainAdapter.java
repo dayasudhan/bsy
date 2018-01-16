@@ -67,20 +67,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainFragmentIn
 
     @Override
         public void onBindViewHolder(final MainFragmentInfoHolder holder , final int position) {
-            final MainFragmentInfoHolder itemViewHolder = (MainFragmentInfoHolder) holder;
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(con, 2);
-            // provide our CustomSpanSizeLookup which determines how many spans each item in grid will occupy
-            gridLayoutManager.setSpanSizeLookup(new CustomSpanSizeLookup(mFeedList.get(position).getFeedimages().size()));
-            // provide our GridLayoutManager to the view
-            itemViewHolder.itemHolder.recyclerView.setLayoutManager(gridLayoutManager);
-            // this is fake list of images
-            itemViewHolder.itemHolder.recyclerView.setVisibility(View.VISIBLE);
-            itemViewHolder.itemHolder.youTubeThumbnailView.setVisibility(View.VISIBLE);
-            itemViewHolder.itemHolder.frameLayout.setVisibility(View.VISIBLE);
-            itemViewHolder.itemHolder.frameLayout2.setVisibility(View.VISIBLE);
-            final YouTubeThumbnailLoader.OnThumbnailLoadedListener onThumbnailLoadedListener = new YouTubeThumbnailLoader.OnThumbnailLoadedListener() {
-                @Override
-                public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
+            try {
+                final MainFragmentInfoHolder itemViewHolder = (MainFragmentInfoHolder) holder;
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(con, 2);
+                // provide our CustomSpanSizeLookup which determines how many spans each item in grid will occupy
+                gridLayoutManager.setSpanSizeLookup(new CustomSpanSizeLookup(mFeedList.get(position).getFeedimages().size()));
+                // provide our GridLayoutManager to the view
+                itemViewHolder.itemHolder.recyclerView.setLayoutManager(gridLayoutManager);
+                // this is fake list of images
+                itemViewHolder.itemHolder.recyclerView.setVisibility(View.VISIBLE);
+                itemViewHolder.itemHolder.youTubeThumbnailView.setVisibility(View.VISIBLE);
+                itemViewHolder.itemHolder.frameLayout.setVisibility(View.VISIBLE);
+                itemViewHolder.itemHolder.frameLayout2.setVisibility(View.VISIBLE);
+                final YouTubeThumbnailLoader.OnThumbnailLoadedListener onThumbnailLoadedListener = new YouTubeThumbnailLoader.OnThumbnailLoadedListener() {
+                    @Override
+                    public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
 
             }
 
@@ -123,21 +124,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainFragmentIn
                         youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
                     }
 
-                    @Override
-                    public void onInitializationFailure(YouTubeThumbnailView youTubeThumbnailView, YouTubeInitializationResult youTubeInitializationResult) {
-                        //write something for failure
-                    }
-                });
-            }
-            else {
-                itemViewHolder.itemHolder.frameLayout2.setVisibility(View.GONE);
-                itemViewHolder.itemHolder.videoview.setVisibility(View.GONE);
-                itemViewHolder.itemHolder.progressBar.setVisibility(View.GONE);
-                itemViewHolder.itemHolder.playButton.setVisibility(View.GONE);
-                itemViewHolder.itemHolder.youTubeThumbnailView.setVisibility(View.GONE);
-                itemViewHolder.itemHolder.frameLayout.setVisibility(View.GONE);
-            }
-            itemViewHolder.itemHolder.imageshareButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onInitializationFailure(YouTubeThumbnailView youTubeThumbnailView, YouTubeInitializationResult youTubeInitializationResult) {
+                            //write something for failure
+                        }
+                    });
+                } else {
+                    itemViewHolder.itemHolder.frameLayout2.setVisibility(View.GONE);
+                    itemViewHolder.itemHolder.videoview.setVisibility(View.GONE);
+                    itemViewHolder.itemHolder.progressBar.setVisibility(View.GONE);
+                    itemViewHolder.itemHolder.playButton.setVisibility(View.GONE);
+                    itemViewHolder.itemHolder.youTubeThumbnailView.setVisibility(View.GONE);
+                    itemViewHolder.itemHolder.frameLayout.setVisibility(View.GONE);
+                }
+                itemViewHolder.itemHolder.imageshareButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -146,12 +146,30 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainFragmentIn
                 ArrayList<Uri> imageUris = new ArrayList<Uri>();
 
 
-                Intent shareIntent = new Intent();
-                // shareIntent.setType("text/html");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, mFeedList.get(position).getHeading());
-                shareIntent.putExtra(Intent.EXTRA_TEXT, mFeedList.get(position).getDescription());
-                if (mFeedList.get(position).getFeedimages().size() > 0) {
-                    shareIntent.setType("image/*");
+                        Intent shareIntent = new Intent();
+                        // shareIntent.setType("text/html");
+                        String strshare = "";
+                        if (mFeedList.get(position).getDescription().length() > 0) {
+                            strshare = new String(mFeedList.get(position).getDescription());
+                        } else {
+                            strshare = new String(mFeedList.get(position).getHeading());
+                        }
+                        if (!mFeedList.get(position).getVideoid().equals("")) {
+                            String youtube_link = "https://www.youtube.com/watch?v=";
+                            youtube_link = youtube_link + mFeedList.get(position).getVideoid();
+                            youtube_link = youtube_link + "\n";
+
+                            strshare = strshare + "\n";
+                            strshare = strshare + youtube_link;
+                        }
+                        strshare = strshare + "\n";
+                        strshare = strshare + con.getString(R.string.invitelink);
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, mFeedList.get(position).getHeading());
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, strshare);
+
+
+                        if (mFeedList.get(position).getFeedimages().size() > 0) {
+                            shareIntent.setType("image/*");
 
                     if (mFeedList.get(position).getFeedimages().size() > 0) {
                         imageUris.add(Uri.parse(imageLoader.getFilePath(mFeedList.get(position).getFeedimages().get(0))));
@@ -195,23 +213,22 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainFragmentIn
                             public void onLongItemClick(View view, int position2) {
 
 
-                            }
-                        })
-        );
-        itemViewHolder.itemHolder.btShowmore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //  Toast.makeText(con,"hi hwllow",Toast.LENGTH_LONG).show();
-                if(mFeedList.size()> position)
-                {
-                    Intent i = new Intent(con, FeedDetail.class);
-                    Gson gson = new Gson();
-                    String strFeed = gson.toJson(mFeedList.get(position));
-                    i.putExtra("FeedItem", strFeed);
-                    con.startActivity(i);
-                }
-            }
-        });
+                                    }
+                                })
+                );
+                itemViewHolder.itemHolder.btShowmore.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //  Toast.makeText(con,"hi hwllow",Toast.LENGTH_LONG).show();
+                        if (mFeedList.size() > position) {
+                            Intent i = new Intent(con, FeedDetail.class);
+                            Gson gson = new Gson();
+                            String strFeed = gson.toJson(mFeedList.get(position));
+                            i.putExtra("FeedItem", strFeed);
+                            con.startActivity(i);
+                        }
+                    }
+                });
 
         itemViewHolder.itemHolder.description.setText( mFeedList.get(position).getDescription());
         itemViewHolder.itemHolder.feedtime.setText(mFeedList.get(position). getTime());
@@ -237,7 +254,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainFragmentIn
                 con.startActivity(intent);
             }
         });
+            }
+            catch(Exception e)
+            {
 
+            }
         }
 
         @Override

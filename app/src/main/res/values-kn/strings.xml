@@ -28,14 +28,21 @@
     <string name="hint_email">ಇಮೇಲ್</string>
     <string name="btn_sign_up">ಪತ್ರ ಕಳುಹಿಸಿ</string>
     <string name="hint_phone">ದೂರವಾಣಿ ಸಂಖ್ಯೆ</string>
-    <string name="connect_to_person">ಪತ್ರ ಬರೆಯಿರಿK</string>
-
+    <string name="connect_to_person">ಪತ್ರ ಬರೆಯಿರಿ</string>
+    <string name="name_validate">ಹೆಸರು ನಮೂದಿಸಿ</string>
+    <string name="letter_validate">ಪತ್ರವನ್ನು ಬರೆಯಿರಿ</string>
+    <string name="email_validate">ಇಮೇಲ್ ಸರಿಯಾಗಿಲ್ಲ</string>
+    <string name="phone_validate">ಫೋನ್ ಸಂಖ್ಯೆ ಸರಿಯಾಗಿಲ್ಲ</string>
     <string name="pref_header_about">ನಮ್ಮ ಬಗ್ಗೆ</string>
     <string name="pref_header_contact_ust">ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</string>
     <string name="pref_header_email">kuruvatechnologies@gmail.com</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
 
     <string name="summary_about">ಈ ಆಂಡ್ರಾಯ್ಡ್ ಅಪ್ ಅನ್ನು "ಕುರುವ ಟೆಕ್ನಾಲಜೀಸ್ ಎಲ್ ಎಲ್ ಪೀ"
 ಅಬಿರುಧಿ ಪಡಿಸಿಧೆ .</string>
     <string name="internet_not_available">ಇಂಟರ್ನೆಟ್ ಲಭ್ಯವಿಲ್ಲ, ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
-
+    <string name="invitelink">"ಈ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಿ https://play.google.com/store/apps/details?id=com.kuruvatech.santoshkenchaamba"</string>
+    <string name="app_version">1.0</string>
 </resources>
