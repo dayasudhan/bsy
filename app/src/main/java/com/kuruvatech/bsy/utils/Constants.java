@@ -23,8 +23,8 @@ public class Constants {
     public static final String UNIQUE_ID = "uniqueid";
     public static final String INVITE_TEXT = "Invite BJP workers, fans, to this app" +
 
-            " Download Android App: https://play.google.com/store/apps/details?id=khaanavali.customer";
-    public static final String INVITE_SUBJECT = "Khaanavali ( ಖಾನಾವಳಿ) the real taste of Karnataka";
+            "Download this android App: https://play.google.com/store/apps/details?id=com.kuruvatech.bsy";
+    public static final String INVITE_SUBJECT = "B S Yeddyurappa App";
 
 
     public static final String SECUREKEY_KEY = "securekey";
