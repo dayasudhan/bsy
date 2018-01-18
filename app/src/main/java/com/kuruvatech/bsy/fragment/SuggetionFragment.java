@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.gson.Gson;
 import com.kuruvatech.bsy.R;
 import com.kuruvatech.bsy.model.Letter;
@@ -48,11 +51,16 @@ public class SuggetionFragment  extends Fragment {
     EditText editName,editPhone,editEmail;
     MultiAutoCompleteTextView lettertextview;
     Button btnSend;
+    private AdView mAdView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.suggetion_layout, container, false);
+        MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 //        ((MainActivity) getActivity())
 //                .setActionBarTitle("Invite Friends");
         editName = (EditText) view.findViewById(R.id.input_name);

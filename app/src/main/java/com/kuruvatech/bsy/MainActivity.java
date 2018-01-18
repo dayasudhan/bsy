@@ -48,11 +48,12 @@ import com.kuruvatech.bsy.fragment.VideoFragment;
 import com.kuruvatech.bsy.utils.Constants;
 import com.kuruvatech.bsy.utils.SessionManager;
 import com.splunk.mint.Mint;
-
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.android.gms.ads.MobileAds;
 
-//import android.support.design.widget.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private boolean fromUser=true;
     ViewPagerAdapter adapter;
     Toolbar tb;
+    private AdView mAdView;
     public boolean isOnline(Context context) {
         ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
@@ -87,14 +89,17 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Mint.enableLogging(true);
         Mint.setLogging(100, "*:W");
         session = new SessionManager(getApplicationContext());
-
+        MobileAds.initialize(this, Constants.ADMOBAPPID);
         setContentView(R.layout.activity_main_new);
+
         FirebaseMessaging.getInstance().subscribeToTopic(Constants.USERNAME);
         String token = FirebaseInstanceId.getInstance().getToken();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-
+//        mAdView = view.findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
 
         setNavigationDrawer();

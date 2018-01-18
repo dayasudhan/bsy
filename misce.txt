@@ -1,0 +1,2 @@
+AppName : B. S. Yeddyurappa
+APPID:     ca-app-pub-6150934781455122~3158839988

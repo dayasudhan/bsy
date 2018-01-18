@@ -13,6 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
 import com.google.android.youtube.player.YouTubeThumbnailView;
 import com.google.gson.Gson;
@@ -21,6 +24,7 @@ import com.kuruvatech.bsy.RecyclerItemClickListener;
 import com.kuruvatech.bsy.SingleViewActivity;
 import com.kuruvatech.bsy.adapter.Adapter;
 import com.kuruvatech.bsy.model.FeedItem;
+import com.kuruvatech.bsy.utils.Constants;
 import com.kuruvatech.bsy.utils.ImageLoader;
 import com.kuruvatech.bsy.utils.SessionManager;
 
@@ -43,7 +47,7 @@ public class AboutFragment extends Fragment {
     ImageView imagePlayBotton;
     private YouTubeThumbnailView youTubeThumbnailView;
     private YouTubeThumbnailLoader youTubeThumbnailLoader;
-
+    private AdView mAdView;
     public static final String API_KEY = "AIzaSyBRLKO5KlEEgFjVgf4M-lZzeGXW94m9w3U";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +55,12 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.about_candidate, container, false);
         session = new SessionManager(getActivity().getApplicationContext());
-
+        MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
         imageLoader = new ImageLoader(getContext(),500,500);
+
+        mAdView = rootview.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
        // Intent intent = getIntent();
         initContent();
         Gson gson = new Gson();

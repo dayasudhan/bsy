@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.kuruvatech.bsy.utils.Constants;
 import com.kuruvatech.bsy.utils.ImageLoader;
 
 import java.util.ArrayList;
@@ -16,10 +20,15 @@ public class SingleViewActivity extends AppCompatActivity {
 
     public ImageLoader imageLoader;
     Button btnBack;
+    private AdView mAdView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_view);
+        MobileAds.initialize(this, Constants.ADMOBAPPID);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         imageLoader = new ImageLoader(getApplicationContext(),500,500);
       //  btnBack = (Button) findViewById(R.id.back_button);
         // Get intent data

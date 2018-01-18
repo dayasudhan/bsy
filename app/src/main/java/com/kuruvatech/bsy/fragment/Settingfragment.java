@@ -9,9 +9,13 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.kuruvatech.bsy.App;
 import com.kuruvatech.bsy.MainActivity;
 import com.kuruvatech.bsy.R;
+import com.kuruvatech.bsy.utils.Constants;
 
 import java.util.Locale;
 
@@ -21,6 +25,7 @@ import java.util.Locale;
 
 public class Settingfragment extends Fragment {
     Switch switchLanguage;
+    private AdView mAdView;
     private static boolean isEnglish = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +34,10 @@ public class Settingfragment extends Fragment {
         View view = inflater.inflate(R.layout.settinglayout, container, false);
 //        ((MainActivity) getActivity())
 //                .setActionBarTitle("Invite Friends");
+        MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         switchLanguage = (Switch) view.findViewById(R.id.language);
         switchLanguage.setChecked(!isEnglish);
         switchLanguage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

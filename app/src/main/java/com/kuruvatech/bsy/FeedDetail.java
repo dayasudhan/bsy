@@ -14,12 +14,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
 import com.google.android.youtube.player.YouTubeThumbnailView;
 import com.google.gson.Gson;
 import com.kuruvatech.bsy.adapter.Adapter;
 import com.kuruvatech.bsy.model.FeedItem;
+import com.kuruvatech.bsy.utils.Constants;
 import com.kuruvatech.bsy.utils.ImageLoader;
 
 import java.util.ArrayList;
@@ -39,6 +43,7 @@ public class FeedDetail extends AppCompatActivity implements YouTubeThumbnailVie
     ImageView imagePlayBotton ,toolbarImage;
     private YouTubeThumbnailView youTubeThumbnailView;
     private YouTubeThumbnailLoader youTubeThumbnailLoader;
+    private AdView mAdView;
     public static final String API_KEY = "AIzaSyBRLKO5KlEEgFjVgf4M-lZzeGXW94m9w3U";
 
     @Override
@@ -46,6 +51,10 @@ public class FeedDetail extends AppCompatActivity implements YouTubeThumbnailVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_detail);
         imageLoader = new ImageLoader(getApplicationContext(),500,500);
+        MobileAds.initialize(this, Constants.ADMOBAPPID);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         Intent intent = getIntent();
         Gson gson = new Gson();
         feedItem = gson.fromJson(intent.getStringExtra("FeedItem"), FeedItem.class);

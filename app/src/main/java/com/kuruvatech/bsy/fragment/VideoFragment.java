@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.MobileAds;
 import com.kuruvatech.bsy.R;
 import com.kuruvatech.bsy.adapter.YoutubeRecyclerAdapter;
 import com.kuruvatech.bsy.model.FeedItem;
@@ -33,6 +34,8 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.protocol.HTTP;
 import cz.msebera.android.httpclient.util.EntityUtils;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class VideoFragment extends Fragment {
     private static final String TAG_HEADING = "heading";
@@ -51,14 +54,24 @@ public class VideoFragment extends Fragment {
     YoutubeRecyclerAdapter adapter;
     SessionManager session;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private AdView mAdView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.video_fragment_item_list, container, false);
+        MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
+
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         recyclerView=(RecyclerView)view.findViewById(R.id.video_list);
         recyclerView.setHasFixedSize(true);
         session = new SessionManager(getActivity().getApplicationContext());
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
         //to use RecycleView, you need a layout manager. default is LinearLayoutManager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
     //    GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);

@@ -14,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.kuruvatech.bsy.FullScreenViewActivity;
 import com.kuruvatech.bsy.R;
 import com.kuruvatech.bsy.RecyclerItemClickListener;
@@ -47,6 +50,7 @@ public class ImageFragment extends Fragment {
 
     ArrayList<String> imageList;
     SessionManager session;
+    private AdView mAdView;
     //private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +63,10 @@ public class ImageFragment extends Fragment {
 //            swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
 //            isSwipeRefresh = false;
             recyclerView = (RecyclerView) view;
+//            MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
+//            mAdView = view.findViewById(R.id.adView);
+//            AdRequest adRequest = new AdRequest.Builder().build();
+//            mAdView.loadAd(adRequest);
             session = new SessionManager(getActivity().getApplicationContext());
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
             // provide our CustomSpanSizeLookup which determines how many spans each item in grid will occupy

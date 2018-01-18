@@ -34,7 +34,7 @@ public class Constants {
     public static final String SECUREKEY_VALUE = "EjR7tUPWx7WhsVs9FuVO6veFxFISIgIxhFZh6dM66rs";
     public static final String VERSION_VALUE = "1";
     public static final String CLIENT_VALUE = "bhoomika";
-
+    public static final String ADMOBAPPID   =  "ca-app-pub-6150934781455122~3158839988";
 
     public static final int TITLE_TEXT_COLOR_RED = 00;
     public static final int TITLE_TEXT_COLOR_GREEN = 177;

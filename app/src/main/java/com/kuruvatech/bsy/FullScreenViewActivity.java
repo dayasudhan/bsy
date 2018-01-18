@@ -11,7 +11,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.kuruvatech.bsy.adapter.FullScreenImageAdapter;
+import com.kuruvatech.bsy.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -20,12 +24,15 @@ public class FullScreenViewActivity extends AppCompatActivity {
  //   private Utils utils;
     private FullScreenImageAdapter adapter;
     private ViewPager viewPager;
-
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen_view);
-
+        MobileAds.initialize(this, Constants.ADMOBAPPID);
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         viewPager = (ViewPager) findViewById(R.id.pager);
 
      //   utils = new Utils(getApplicationContext());

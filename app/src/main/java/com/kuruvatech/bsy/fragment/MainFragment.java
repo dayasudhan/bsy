@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
 import com.kuruvatech.bsy.MainActivity;
 import com.kuruvatech.bsy.R;
 import com.kuruvatech.bsy.adapter.FeedAdapter;
@@ -45,6 +46,8 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.protocol.HTTP;
 import cz.msebera.android.httpclient.util.EntityUtils;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 public class MainFragment extends Fragment {
@@ -81,10 +84,12 @@ public class MainFragment extends Fragment {
     CirclePageIndicator indicator;
     CardView video_cardview;
     boolean isResponsereceived = true;
+    private AdView mAdView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        MobileAds.initialize(getActivity(), Constants.ADMOBAPPID);
         rootview = inflater.inflate(R.layout.fragment_main, container, false);
         listView = (RecyclerView) rootview.findViewById(R.id.listView_feedlist);
         video_cardview = (CardView) rootview.findViewById(R.id.video_cardview);
@@ -96,7 +101,9 @@ public class MainFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(linearLayoutManager);
 
-
+        mAdView = rootview.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         noFeedstv = (TextView)rootview.findViewById(R.id.textView_no_feeds);
         session = new SessionManager(getActivity().getApplicationContext());
