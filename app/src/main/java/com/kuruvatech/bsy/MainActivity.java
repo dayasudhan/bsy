@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Mint.initAndStartSession(this, "49d903c2");
+        Mint.initAndStartSession(this, "49d903c2");//3d22f02d  Mint.initAndStartSession(this.getApplication(), "3d22f02d");
         Mint.enableLogging(true);
         Mint.setLogging(100, "*:W");
         session = new SessionManager(getApplicationContext());

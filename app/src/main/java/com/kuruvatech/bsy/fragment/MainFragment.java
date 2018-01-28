@@ -112,6 +112,12 @@ public class MainFragment extends Fragment {
                 .setActionBarTitle(getString(R.string.titletext));
 
         isSwipeRefresh = false;
+        feedList = new ArrayList<FeedItem>();
+        scrollimages = new ArrayList<String>();
+        listView.getRecycledViewPool().clear();
+        adapter2 = new  MainAdapter(getActivity(),feedList);
+        listView.setAdapter(adapter2);
+
       //  feedList  =session.getLastNewsFeed();
 //        if(feedList !=null)
 //        {
@@ -151,7 +157,7 @@ public class MainFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, R.color.colorAccent, R.color.colorPrimaryDark);
         swipeRefreshLayout.setProgressBackgroundColor(android.R.color.transparent);
 
-        feedList = new ArrayList<FeedItem>();
+
         initfromsession();
         getFeeds();
 
@@ -175,14 +181,15 @@ public class MainFragment extends Fragment {
         {
             return;
         }
-        feedList.clear();
+
+
         try {
             JSONObject feed_object2 = new JSONObject(data);
 
             if (feed_object2.has(TAG_FEEDS)) {
                 //feed_object2.getString(TAG_FEEDS);
                 JSONArray feedsarray = new JSONArray(feed_object2.getString(TAG_FEEDS));
-
+                ArrayList<FeedItem> lfeedList = new ArrayList<FeedItem>();
                 for (int i = feedsarray.length() - 1; i >= 0; i--) {
                     JSONObject feed_object = feedsarray.getJSONObject(i);
                     FeedItem feedItem = new FeedItem();
@@ -247,12 +254,15 @@ public class MainFragment extends Fragment {
                         feedItem.setFeedaudios(strList);
 
                     }
-                    feedList.add(feedItem);
+
+                    lfeedList.add(feedItem);
                 }
+                feedList.clear();
+                feedList.addAll(lfeedList);
             }
             if (feed_object2.has(TAG_SCROLLIMAGES)) {
                 JSONArray feedimagesarray = new JSONArray(feed_object2.getString(TAG_SCROLLIMAGES));
-                scrollimages = new ArrayList<String>();
+
                 scrollimages.clear();
                 for (int j = 0; j < feedimagesarray.length(); j++) {
                     JSONObject image_object = feedimagesarray.getJSONObject(j);
@@ -272,9 +282,9 @@ public class MainFragment extends Fragment {
     {
 
      //   adapter = new FeedAdapter(getActivity(),R.layout.feeditem,feedList);
-        adapter2 = new  MainAdapter(getActivity(),feedList);
+        //listView.getRecycledViewPool().clear();
         adapter2.notifyDataSetChanged();
-        listView.setAdapter(adapter2);
+
         if(feedList.size() > 0 ) {
             noFeedstv.setVisibility(View.INVISIBLE);
         }
@@ -282,7 +292,7 @@ public class MainFragment extends Fragment {
         {
             noFeedstv.setVisibility(View.VISIBLE);
         }
-        if(scrollimages.size()>2) {
+        if(scrollimages != null && scrollimages.size()>2) {
             pagerAdapter.addAll(scrollimages);
             pager.setAdapter(pagerAdapter);
             indicator.setViewPager(pager);
@@ -340,8 +350,9 @@ public  class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
                 int status = response.getStatusLine().getStatusCode();
 
-                //feedList = new ArrayList<FeedItem>();
-                feedList.clear();
+
+                ///feedList.clear();
+
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
 
@@ -349,7 +360,7 @@ public  class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                     session.setLastNewsFeed(data);
                     //JSONArray feedsarray = new JSONArray(data);
                     JSONObject feed_object2 = new JSONObject(data);
-
+                    ArrayList<FeedItem> lfeedList = new ArrayList<FeedItem>();
                     if (feed_object2.has(TAG_FEEDS)) {
                         //feed_object2.getString(TAG_FEEDS);
                         JSONArray feedsarray = new JSONArray(feed_object2.getString(TAG_FEEDS));
@@ -418,13 +429,16 @@ public  class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                                 feedItem.setFeedaudios(strList);
 
                             }
-                            feedList.add(feedItem);
+                            lfeedList.add(feedItem);
                         }
+                        feedList.clear();
+                        feedList.addAll(lfeedList);
+
                     }
                     if(feed_object2.has(TAG_SCROLLIMAGES))
                     {
                         JSONArray feedimagesarray = new JSONArray(feed_object2.getString(TAG_SCROLLIMAGES));
-                        scrollimages = new ArrayList<String>();
+
                         scrollimages.clear();
                         for (int j = 0; j < feedimagesarray.length(); j++) {
                             JSONObject image_object = feedimagesarray.getJSONObject(j);
