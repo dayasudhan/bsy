@@ -79,13 +79,15 @@ public class VideoFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         isSwipeRefresh = false;
         feedList = new ArrayList<FeedItem>();
+        adapter=new YoutubeRecyclerAdapter(getContext(),feedList);
+        recyclerView.setAdapter(adapter);
         initfromsession();
         getVideos();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 isSwipeRefresh = true;
-                getVideos();
+               // getVideos();
             }
 
         });
@@ -107,10 +109,11 @@ public class VideoFragment extends Fragment {
         {
             return;
         }
-        feedList.clear();
+
         try
         {
             JSONArray feedsarray = new JSONArray(data);
+            ArrayList<FeedItem> lfeedList = new ArrayList<FeedItem>();
             for (int i = 0; i < feedsarray.length(); i++) {
                 JSONObject feed_object = feedsarray.getJSONObject(i);
                 FeedItem feedItem = new FeedItem();
@@ -150,8 +153,10 @@ public class VideoFragment extends Fragment {
                     feedItem.setFeedaudios(strList);
 
                 }
-                feedList.add(feedItem);
+                lfeedList.add(feedItem);
             }
+            feedList.clear();
+            feedList.addAll(lfeedList);
             initAdapter();
         }
         catch (Exception e) {
@@ -165,8 +170,7 @@ public class VideoFragment extends Fragment {
 //        adapter = new Adapter(getActivity(),imageList);
 //        recyclerView.setAdapter(adapter);
 
-        adapter=new YoutubeRecyclerAdapter(getContext(),feedList);
-        recyclerView.setAdapter(adapter);
+
         adapter.notifyDataSetChanged();
 //        if(imageList.size() > 0 ) {
 //            noFeedstv.setVisibility(View.INVISIBLE);
@@ -222,13 +226,14 @@ public class VideoFragment extends Fragment {
                 int status = response.getStatusLine().getStatusCode();
 
 
-                feedList.clear();
+
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
 
                     String data = EntityUtils.toString(entity,HTTP.UTF_8);
                     session.setLastVideoFeed(data);
                     JSONArray feedsarray = new JSONArray(data);
+                    ArrayList<FeedItem> lfeedList = new ArrayList<FeedItem>();
                     for (int i = 0; i < feedsarray.length(); i++) {
                         JSONObject feed_object = feedsarray.getJSONObject(i);
                         FeedItem feedItem = new FeedItem();
@@ -268,8 +273,11 @@ public class VideoFragment extends Fragment {
                             feedItem.setFeedaudios(strList);
 
                         }
-                        feedList.add(feedItem);
+                        lfeedList.add(feedItem);
+
                     }
+                    feedList.clear();
+                    feedList.addAll(lfeedList);
                     return true;
                 }
             } catch (IOException e) {
